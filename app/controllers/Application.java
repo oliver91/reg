@@ -42,6 +42,7 @@ public class Application extends Controller
         public String email;
         public String password;
 
+
         public String validate()
         {
             if (User.authenticate(email, password) == null) {
