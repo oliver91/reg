@@ -25,6 +25,7 @@ public class User extends Model {
                 .findUnique();
     }
 
+
     public static Finder<String, User> find = new Finder<String, User>(
             String.class, User.class);
 }

@@ -1,9 +1,9 @@
 
-@(form: Form[Application.Login])
+@(reg_form: Form[Application.Registration])
 
 <html>
     <head>
-        <title>edArea authenticate</title>
+        <title>edArea registration</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <link rel="stylesheet" type="text/css" media="screen"
         href="@routes.Assets.at("stylesheets/login.css")">
@@ -14,23 +14,27 @@
             <a href="@routes.Application.index" id="logo">edArea</a>
         </header>
 
-        @helper.form(routes.Application.authenticate) {
-            <h1>Sign in</h1>
+        @helper.form(routes.Application.addUser) {
+            <h1>Registration</h1>
 
-            @if(form.hasGlobalErrors) {
+            @if(reg_form.hasGlobalErrors) {
                 <p class="error">
-                @form.globalError.message
+                @reg_form.globalError.message
                 </p>
             }
 
+
             <p>
-                <input type="email" name="email" placeholder="Email" value="@form("email").value">
+                <input type="name" name="name" placeholder="Name" value="@reg_form("name").value">
+            </p>
+            <p>
+                <input type="email" name="email" placeholder="Email" value="@reg_form("email").value">
             </p>
             <p>
                 <input type="password" name="password" placeholder="Password">
             </p>
             <p>
-                <button type="submit">Login</button>
+                <button type="submit">Sign in</button>
             </p>
         }
     </body>

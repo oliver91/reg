@@ -7,6 +7,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import views.html.index;
 import views.html.login;
+import views.html.registration;
 
 public class Application extends Controller
 {
@@ -26,7 +27,8 @@ public class Application extends Controller
                 routes.Application.login()
         );
     }
-    public static Result authenticate() {
+    public static Result authenticate()
+    {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
             return badRequest(login.render(loginForm));
@@ -38,7 +40,22 @@ public class Application extends Controller
             );
         }
     }
-    public static class Login {
+
+    public static Result registration()
+    {
+        return ok(registration.render(Form.form(Registration.class)));
+    }
+
+    public static Result addUser()
+    {
+        Form<Registration> reg_form = Form.form(Registration.class).bindFromRequest();
+        new User(reg_form.get().email, reg_form.get().name, reg_form.get().password).save();
+        authenticate();
+        return redirect(routes.Application.index());
+    }
+
+    public static class Login
+    {
         public String email;
         public String password;
 
@@ -50,5 +67,17 @@ public class Application extends Controller
             }
             return null;
         }
+    }
+
+    public static class Registration
+    {
+        public String name;
+        public String email;
+        public String password;
+
+//        public static void addUser()
+//        {
+//
+//        }
     }
 }
