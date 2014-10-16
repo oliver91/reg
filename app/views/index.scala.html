@@ -1,13 +1,138 @@
-@(user: User)()
+@(user: User)
 
 @main(user) {
 
-    <header>
-        <div id="logo"></div>
-        <ul>
-            <li>Главная</li>
-            <li>Про нас</li>
-            <li>Про проект</li>
-        </ul>
-    </header>
+    <div class="login">
+
+        <dl id="user">
+            <dt>@user.name <span>(@user.email)</span></dt>
+            <dd>
+                <a href="@routes.Application.logout()">Logout</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="main_h">
+        <div class="main_h1">
+            <div class="logo_menu">
+            </div>
+            <ul class="menuitem">
+                <li><a href="#screen1">Главная</a></li>
+                <li><a href="#screen2">Про Нас</a></li>
+            </ul>
+
+            <ul class="menuitem1">
+                <li>
+                    <a href="#">Про организацию</a>
+                </li>
+                <li>
+                    <a href="#">Преимущества</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="login">
+
+            <dl id="user">
+                <dt>@user.name <span>(@user.email)</span></dt>
+                <dd>
+                    <a href="@routes.Application.logout()">Logout</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div id="screen1" class="full screen1">
+        <div class="full" style="position:relative">
+            <div class="text_logo">Lms system
+            </div>
+            <div class="logo">
+            </div>
+            <a href="#">
+                <div class="button1 button1_p animated fadeInDown option2">
+                    <p>Начать как студент</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="button2 button2_p animated fadeInDown option2">
+                    <p>Начать как учитель</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="button3 button3_p animated fadeInDown option2">
+                    <p>Начать как организация</p>
+                </div>
+            </a>
+            <div class="left_text1 animated fadeInDown option2">
+                <h1>
+                    Новое слово<br>в обучении
+                </h1>
+            </div>
+            <a class="buttonwhy animated fadeInDown option3" href="#screen2">
+                <div class="why">
+                    <p style="text-align: center;"><b>Почему именно</b></p>
+                    <p style="font-size: 36px; text-align: center;"><b>мы?</b></p>
+                </div>
+                <div class="button5 animated infinite bounce ">
+                </div>
+            </a>
+        </div>
+    </div>
+    <script type="text/javascript">
+    // Sticky Header
+    $(window).scroll(function() {
+
+    if ($(window).scrollTop() > 400) {
+    $('.person1').addClass('animated fadeInLeft animated');
+    } else {
+    $('.person1').removeClass('animated fadeInLeft animated');
+    }
+    if ($(window).scrollTop() > 400) {
+    $('.person2').addClass('animated fadeInRight animated');
+    } else {
+    $('.person2').removeClass('animated fadeInRight animated');
+    }
+    });
+    </script>
+    <script>
+    $(document).ready(function(){
+
+    $(window).scroll(function(){
+
+    var bo = $("body").scrollTop();
+
+    if ( bo > 400 ) $("#screen2").animate({'opacity':'1'},500);
+
+    })
+
+    })
+
+    </script>
+    <div id="screen2" class="full screen2">
+        <div class="about_us">
+            <div class="person1 animated fadeInLeft animated">
+                <div class="persimg1">
+                </div>
+                <div class="perstext1">
+                    <p>Зубенко Олег:Back-end</p>
+                    Студент 6 курса КПИ группы ИС-32с
+                </div>
+            </div>
+            <div class="tools_img">
+                <div class="tools_text">
+                    <h1>ПРО НАС:</h1>
+                </div>
+                <div class="tools_img1">
+
+                </div>
+            </div>
+            <div class="person2 animated fadeInRight animated">
+                <div class="persimg2">
+                </div>
+                <div class="perstext2">
+                    <p>Ткаченко Илья:Front-end</p>
+                    Студент 6 курса КПИ группы ИС-32с
+                </div>
+            </div>
+        </div>
+    </div>
+
 }
