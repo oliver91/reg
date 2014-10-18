@@ -4,52 +4,206 @@
 <html>
     <head>
         <title>edArea authenticate</title>
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <link rel="stylesheet" type="text/css" media="screen"
-        href="@routes.Assets.at("stylesheets/login.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/animate.css")">
+        <script src="@routes.Assets.at("javascripts/jquery-2.1.1.min.js")" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript" charset="${_response_encoding}"></script>
+        <script type="text/javascript">
+        // Sticky Header
+        $(window).scroll(function() {
+
+        if ($(window).scrollTop() > 500) {
+        $('.main_h').addClass('sticky');
+        } else {
+        $('.main_h').removeClass('sticky');
+        }
+        });
+        </script>
+
 
     </head>
     <body>
-        <header>
-            <a href="@routes.Application.index" id="logo">edArea</a>
-        </header>
 
-        @helper.form(routes.Application.authenticate) {
-            <h1>Sign in</h1>
 
-            @if(form.hasGlobalErrors) {
-                <p class="error">
-                @form.globalError.message
+
+    <div class="login">
+        <a id="go">Войти</a>
+
+    </div>
+        <div id="modal_form"><!-- Само окно -->
+            <span id="modal_close">X</span> <!-- Кнопка закрыть -->
+            @helper.form(routes.Application.authenticate) {
+                <h1>Sign in</h1>
+
+                @if(form.hasGlobalErrors) {
+                    <p class="error">
+                    @form.globalError.message
+                    </p>
+                }
+
+                <p>
+                    <input type="email" name="email" placeholder="Email" value="@form("email").value">
+                </p>
+                <p>
+                    <input type="password" name="password" placeholder="Password">
+                </p>
+                <p>
+                    <button type="submit">Login</button>
                 </p>
             }
-
-            <p>
-                <input type="email" name="email" placeholder="Email" value="@form("email").value">
-            </p>
-            <p>
-                <input type="password" name="password" placeholder="Password">
-            </p>
-            <p>
-                <button type="submit">Login</button>
-            </p>
-        }
-
-        <div class="main_block">
-            <div class="main_text">
-                <h1>Новое слово в обучении</h1>
+        </div>
+        <div id="overlay"></div>
+        <div class="main_h">
+            <div class="main_h1">
+                <div class="logo_menu">
             </div>
-            <div class="button_block">
-                <div class="button1">
-                    <a href="#">Начать как студент</a>
+                <ul class="menuitem">
+                    <li><a href="#screen1">Главная</a></li>
+                    <li><a href="#screen2">Про Нас</a></li>
+                </ul>
+
+                <ul class="menuitem1">
+                    <li>
+                        <a href="#">Про организацию</a>
+                    </li>
+                    <li>
+                        <a href="#">Преимущества</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="login">
+
+                <a href="#ololo" id="go">Войти</a>
+
+            </div>
+        </div>
+        <div id="screen1" class="full screen1">
+            <div class="full" style="position:relative">
+                <div class="text_logo">Lms system
                 </div>
-                <div class="button2">
-                    <a href="#">Начать как учитель</a>
+                <div class="logo">
+            </div>
+                <a href="@routes.Application.registration()">
+                    <div class="button1 button1_p animated fadeInDown option2">
+                        <p>Начать как студент</p>
+                    </div>
+                </a>
+                <a href="@routes.Application.registration()">
+                    <div class="button2 button2_p animated fadeInDown option2">
+                        <p>Начать как учитель</p>
+                    </div>
+                </a>
+                <a href="@routes.Application.registration()">
+                    <div class="button3 button3_p animated fadeInDown option2">
+                        <p>Начать как организация</p>
+                    </div>
+                </a>
+                <div class="left_text1 animated fadeInDown option2">
+                    <h1>
+                    Новое слово<br>в обучении
+                </h1>
                 </div>
-                <div class="button2">
-                    <a href="#">Начать как организация</a>
+                <a class="buttonwhy animated fadeInDown option3" href="#screen2">
+                    <div class="why">
+                        <p style="text-align: center;"><b>Почему именно</b></p>
+                        <p style="font-size: 36px; text-align: center;"><b>мы?</b></p>
+                    </div>
+                    <div class="button5 animated infinite bounce ">
+                </div>
+                </a>
+            </div>
+        </div>
+        <script type="text/javascript">
+        // Sticky Header
+        $(window).scroll(function() {
+
+        if ($(window).scrollTop() > 400) {
+        $('.person1').addClass('animated fadeInLeft animated');
+        } else {
+        $('.person1').removeClass('animated fadeInLeft animated');
+        }
+        if ($(window).scrollTop() > 400) {
+        $('.person2').addClass('animated fadeInRight animated');
+        } else {
+        $('.person2').removeClass('animated fadeInRight animated');
+        }
+        });
+        </script>
+        <script>
+        $(document).ready(function(){
+
+        $(window).scroll(function(){
+
+        var bo = $("body").scrollTop();
+
+        if ( bo > 400 ) $("#screen2").animate({'opacity':'1'},500);
+
+        })
+
+        })
+
+        </script>
+        <div id="screen2" class="full screen2">
+            <div class="about_us">
+                <div class="person1 animated fadeInLeft animated">
+                    <div class="persimg1">
+                </div>
+                    <div class="perstext1">
+                        <p>Зубенко Олег:Back-end</p>
+                        Студент 6 курса КПИ группы ИС-32с
+                    </div>
+                </div>
+                <div class="tools_img">
+                    <div class="tools_text">
+                        <h1>ПРО НАС:</h1>
+                    </div>
+                    <div class="tools_img1">
+
+                </div>
+                </div>
+                <div class="person2 animated fadeInRight animated">
+                    <div class="persimg2">
+                </div>
+                    <div class="perstext2">
+                        <p>Ткаченко Илья:Front-end</p>
+                        Студент 6 курса КПИ группы ИС-32с
+                    </div>
                 </div>
             </div>
         </div>
 
+
+        <script>
+        $('a[href^="#"]').click(function(){
+        var target = $(this).attr('href');
+        $('html, body').animate({scrollTop: $(target).offset().top}, 800);
+        return false;
+        });
+        </script>
+        <script>
+        $(document).ready(function() { // вся магия после загрузки страницы
+        $('a#go').click( function(event){ // ловим клик по ссылки с id="go"
+        event.preventDefault(); // выключаем стандартную роль элемента
+        $('#overlay').fadeIn(400, // сначала плавно показываем темную подложку
+        function(){ // после выполнения предъидущей анимации
+        $('#modal_form')
+        .css('display', 'block') // убираем у модального окна display: none;
+        .animate({opacity: 1, top: '50%'}, 200); // плавно прибавляем прозрачность одновременно со съезжанием вниз
+        });
+        });
+        /* Закрытие модального окна, тут делаем то же самое но в обратном порядке */
+        $('#modal_close, #overlay').click( function(){ // ловим клик по крестику или подложке
+        $('#modal_form')
+        .animate({opacity: 0, top: '45%'}, 200,  // плавно меняем прозрачность на 0 и одновременно двигаем окно вверх
+        function(){ // после анимации
+        $(this).css('display', 'none'); // делаем ему display: none;
+        $('#overlay').fadeOut(400); // скрываем подложку
+        }
+        );
+        });
+        });
+        </script>
     </body>
 </html>
